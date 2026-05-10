@@ -11,7 +11,7 @@ from .exceptions import (
 )
 from .http.client import DataGoKrClient
 
-__version__ = "4.16.0"
+__version__ = "0.1.0"
 
 __all__ = [
     "DataGoKrClient",
