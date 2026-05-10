@@ -145,11 +145,23 @@ def main() -> None:
         old_sigs = extract_sigs(tmpdir)
         pypi_ver = get_installed_version(tmpdir) or get_pypi_version() or get_repo_version()
 
+    repo_ver = get_repo_version()
+
+    # Sanity check: if PyPI version is from a different publisher (major version
+    # more than 1 ahead of our repo baseline), ignore it and stay on repo version.
+    if semver_tuple(pypi_ver)[0] > semver_tuple(repo_ver)[0] + 1:
+        print(
+            f"PyPI: {pypi_ver} is far ahead of repo: {repo_ver} — "
+            "assuming pre-existing unrelated package; skipping bump.",
+            file=sys.stderr,
+        )
+        print(repo_ver)
+        return
+
     new_sigs = extract_sigs(str(ROOT))
     kind = compare(old_sigs, new_sigs)
 
     computed = bump(pypi_ver, kind)
-    repo_ver = get_repo_version()
     new_ver = computed if semver_tuple(computed) >= semver_tuple(repo_ver) else repo_ver
 
     print(f"PyPI: {pypi_ver}  |  bump: {kind}  |  new: {new_ver}", file=sys.stderr)
