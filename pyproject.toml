@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "data-go-kr-client"
-version = "0.1.0"
+version = "4.16.0"
 description = "Python client for 공공데이터포털 OpenAPI"
 requires-python = ">=3.11"
 keywords = ["korea", "api", "data-go-kr"]
