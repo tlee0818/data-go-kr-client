@@ -5,7 +5,7 @@ Usage: python scripts/extract_sigs.py <pkg_root_or_site_packages_dir>
 
 Outputs:
 {
-  "DataGoKrClientClient": {"method_name": {"param": {"required": bool, "kind": str}, ...}, ...}
+  "DataGoKrClient": {"method_name": {"param": {"required": bool, "kind": str}, ...}, ...}
 }
 
 A null value means the import failed (package not present at that path).
@@ -18,7 +18,7 @@ import sys
 sys.path.insert(0, sys.argv[1])
 
 CLIENTS = [
-    ("data_go_kr_client.http.client", "DataGoKrClientClient"),
+    ("data_go_kr_client.http.client", "DataGoKrClient"),
 ]
 
 result = {}

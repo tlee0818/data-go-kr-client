@@ -1,7 +1,7 @@
 from .exceptions import (
     APIKeyError,
     APIResponseError,
-    DataGoKrClientError,
+    DataGoKrError,
     InvalidParameterError,
     MissingParameterError,
     NetworkError,
@@ -9,13 +9,13 @@ from .exceptions import (
     RateLimitError,
     ServerSideError,
 )
-from .http.client import DataGoKrClientClient
+from .http.client import DataGoKrClient
 
 __version__ = "0.1.0"
 
 __all__ = [
-    "DataGoKrClientClient",
-    "DataGoKrClientError",
+    "DataGoKrClient",
+    "DataGoKrError",
     "APIKeyError",
     "RateLimitError",
     "APIResponseError",

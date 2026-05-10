@@ -36073,7 +36073,7 @@ def _p(d: dict) -> dict:
     return {k: v for k, v in d.items() if v is not None}
 
 
-class DataGoKrClientClient(BaseHttpClient):
+class DataGoKrClient(BaseHttpClient):
     """
     Client for 공공데이터포털 OpenAPI.
     Auth: serviceKey query param, injected automatically.

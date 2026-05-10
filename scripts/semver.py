@@ -27,7 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 EXTRACT = ROOT / "scripts" / "extract_sigs.py"
-CLIENT_CLASS = "DataGoKrClientClient"
+CLIENT_CLASS = "DataGoKrClient"
 
 
 def extract_sigs(pkg_path: str) -> dict:

@@ -1,11 +1,11 @@
-"""Tests for DataGoKrClientClient — endpoint routing, error handling."""
+"""Tests for DataGoKrClient — endpoint routing, error handling."""
 
 import httpx
 import pytest
 import respx
 
 from data_go_kr_client.exceptions import APIKeyError, RateLimitError
-from data_go_kr_client.http.client import DataGoKrClientClient
+from data_go_kr_client.http.client import DataGoKrClient
 from tests.conftest import (
     FAKE_KEY,
     GET_ELECTRICAL_EFFICIENCY_JSON,
@@ -26,7 +26,7 @@ def test_get_power_usage_service_hits_correct_endpoint():
             json=GET_POWER_USAGE_SERVICE_JSON,
         )
     )
-    DataGoKrClientClient(FAKE_KEY).get_power_usage_service(
+    DataGoKrClient(FAKE_KEY).get_power_usage_service(
         from_date="test_from_date",
         to_date="test_to_date",
         plant="test_plant",
@@ -47,7 +47,7 @@ def test_get_power_usage_service_injects_auth_key():
             json=GET_POWER_USAGE_SERVICE_JSON,
         )
     )
-    DataGoKrClientClient(FAKE_KEY).get_power_usage_service(
+    DataGoKrClient(FAKE_KEY).get_power_usage_service(
         from_date="test_from_date",
         to_date="test_to_date",
         plant="test_plant",
@@ -68,7 +68,7 @@ def test_get_electrical_efficiency_hits_correct_endpoint():
             json=GET_ELECTRICAL_EFFICIENCY_JSON,
         )
     )
-    DataGoKrClientClient(FAKE_KEY).get_electrical_efficiency(
+    DataGoKrClient(FAKE_KEY).get_electrical_efficiency(
         from_date="test_from_date",
         to_date="test_to_date",
         plant="test_plant",
@@ -89,7 +89,7 @@ def test_get_electrical_efficiency_injects_auth_key():
             json=GET_ELECTRICAL_EFFICIENCY_JSON,
         )
     )
-    DataGoKrClientClient(FAKE_KEY).get_electrical_efficiency(
+    DataGoKrClient(FAKE_KEY).get_electrical_efficiency(
         from_date="test_from_date",
         to_date="test_to_date",
         plant="test_plant",
@@ -110,7 +110,7 @@ def test_get_plant_performance_prediction_service_hits_correct_endpoint():
             json=GET_PLANT_PERFORMANCE_PREDICTION_SERVICE_JSON,
         )
     )
-    DataGoKrClientClient(FAKE_KEY).get_plant_performance_prediction_service(
+    DataGoKrClient(FAKE_KEY).get_plant_performance_prediction_service(
         from_date="test_from_date",
         to_date="test_to_date",
         plant="test_plant",
@@ -131,7 +131,7 @@ def test_get_plant_performance_prediction_service_injects_auth_key():
             json=GET_PLANT_PERFORMANCE_PREDICTION_SERVICE_JSON,
         )
     )
-    DataGoKrClientClient(FAKE_KEY).get_plant_performance_prediction_service(
+    DataGoKrClient(FAKE_KEY).get_plant_performance_prediction_service(
         from_date="test_from_date",
         to_date="test_to_date",
         plant="test_plant",
@@ -151,7 +151,7 @@ def test_raises_rate_limit_error():
         )
     )
     with pytest.raises(RateLimitError):
-        DataGoKrClientClient(FAKE_KEY).get_power_usage_service(
+        DataGoKrClient(FAKE_KEY).get_power_usage_service(
             from_date="test_from_date",
             to_date="test_to_date",
             plant="test_plant",
@@ -170,7 +170,7 @@ def test_raises_api_key_error():
         )
     )
     with pytest.raises(APIKeyError):
-        DataGoKrClientClient(FAKE_KEY).get_power_usage_service(
+        DataGoKrClient(FAKE_KEY).get_power_usage_service(
             from_date="test_from_date",
             to_date="test_to_date",
             plant="test_plant",

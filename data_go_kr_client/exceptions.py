@@ -1,5 +1,5 @@
 __all__ = [
-    "DataGoKrClientError",
+    "DataGoKrError",
     "APIKeyError",
     "RateLimitError",
     "APIResponseError",
@@ -11,19 +11,19 @@ __all__ = [
 ]
 
 
-class DataGoKrClientError(Exception):
+class DataGoKrError(Exception):
     """Base exception for 공공데이터포털 OpenAPI client."""
 
 
-class APIKeyError(DataGoKrClientError):
+class APIKeyError(DataGoKrError):
     """Invalid or missing API key."""
 
 
-class RateLimitError(DataGoKrClientError):
+class RateLimitError(DataGoKrError):
     """Daily traffic limit exceeded."""
 
 
-class APIResponseError(DataGoKrClientError):
+class APIResponseError(DataGoKrError):
     """Generic API error response."""
 
 
@@ -35,13 +35,13 @@ class MissingParameterError(APIResponseError):
     """Required parameter missing."""
 
 
-class NoDataFoundError(DataGoKrClientError):
+class NoDataFoundError(DataGoKrError):
     """No data found for the query."""
 
 
-class ServerSideError(DataGoKrClientError):
+class ServerSideError(DataGoKrError):
     """Server-side error."""
 
 
-class NetworkError(DataGoKrClientError):
+class NetworkError(DataGoKrError):
     """Network or connection error."""

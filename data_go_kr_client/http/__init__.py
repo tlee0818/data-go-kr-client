@@ -1,3 +1,3 @@
-from .client import DataGoKrClientClient
+from .client import DataGoKrClient
 
-__all__ = ["DataGoKrClientClient"]
+__all__ = ["DataGoKrClient"]

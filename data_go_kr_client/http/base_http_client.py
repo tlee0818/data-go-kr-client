@@ -11,7 +11,7 @@ from ..config import MAX_RETRIES, REQUEST_TIMEOUT_SECONDS
 from ..exceptions import (
     APIKeyError,
     APIResponseError,
-    DataGoKrClientError,
+    DataGoKrError,
     InvalidParameterError,
     MissingParameterError,
     NetworkError,
@@ -100,7 +100,7 @@ class BaseHttpClient:
                 resp.raise_for_status()
                 return resp.text
 
-            except (DataGoKrClientError,):
+            except (DataGoKrError,):
                 raise
             except httpx.ConnectError as exc:
                 raise NetworkError(f"Network error: could not connect to {url} — {exc}") from exc
@@ -154,7 +154,7 @@ class BaseHttpClient:
                     _check_result_code(data)
                     return data
 
-                except (DataGoKrClientError,):
+                except (DataGoKrError,):
                     raise
                 except httpx.ConnectError as exc:
                     raise NetworkError(
